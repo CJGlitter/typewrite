@@ -1,5 +1,7 @@
 ## Typewrite ##
 
+[![Gem Version](https://badge.fury.io/rb/typewrite.svg)](https://badge.fury.io/rb/typewrite)
+
 Typewrite is a Ruby library that prints console messages "typewriter" style, or letter-by-letter.
 
 ### Installation ###

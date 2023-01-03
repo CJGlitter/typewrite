@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "typewrite"
-  s.version     = "1.0.1"
+  s.version     = "1.1.0"
   s.summary     = "Typewriter Effect!"
   s.description = "A simple gem to add a typewriter effect to console output."
   s.authors     = ["Cory Davis"]

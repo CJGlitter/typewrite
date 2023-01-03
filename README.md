@@ -1,8 +1,5 @@
 ## Typewrite ##
 
-[![RubyGems][gem_version_badge]][ruby_gems]
-[![RubyGems][gem_downloads_badge]][ruby_gems]
-
 Typewrite is a Ruby library that prints console messages "typewriter" style, or letter-by-letter.
 
 ### Installation ###
@@ -45,9 +42,3 @@ Copywrite ©Cory Davis 2023
 https://cjglitter.com
 
 Released under the MIT license. See LICENSE file for details.
-
-[gem_version_badge]: https://img.shields.io/gem/v/awesome_print.svg?style=flat
-[gem_downloads_badge]: http://img.shields.io/gem/dt/awesome_print.svg?style=flat
-[ruby_gems]: http://rubygems.org/gems/typewrite
-[code_climate_badge]: http://img.shields.io/codeclimate/github/awesome-print/awesome_print.svg?style=flat
-[code_climate_coverage_badge]: https://codeclimate.com/github/awesome-print/awesome_print/badges/coverage.svg

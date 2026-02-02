@@ -93,34 +93,34 @@ RSpec.describe Typewrite do
         end
 
         it "outputs full message when no key is pressed (interrupt: true)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: true) }.to output("hello\n").to_stdout
         end
 
         it "outputs full message when no key is pressed (interrupt: :enter)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: :enter) }.to output("hello\n").to_stdout
         end
 
         it "outputs full message when no key is pressed (interrupt: :any)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: :any) }.to output("hello\n").to_stdout
         end
 
         it "outputs full message when no key is pressed (interrupt: array)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: ["q"]) }.to output("hello\n").to_stdout
         end
 
         it "prints remaining text immediately when enter is pressed (interrupt: true)" do
           call_count = 0
-          allow(mock_stdin).to receive(:wait_readable) do
+          allow(IO).to receive(:select) do
             call_count += 1
-            call_count == 2 ? true : nil
+            call_count == 2 ? [mock_stdin] : nil
           end
           allow(mock_stdin).to receive(:getc).and_return("\n")
 
@@ -129,9 +129,9 @@ RSpec.describe Typewrite do
 
         it "prints remaining text immediately when enter is pressed (interrupt: :enter)" do
           call_count = 0
-          allow(mock_stdin).to receive(:wait_readable) do
+          allow(IO).to receive(:select) do
             call_count += 1
-            call_count == 2 ? true : nil
+            call_count == 2 ? [mock_stdin] : nil
           end
           allow(mock_stdin).to receive(:getc).and_return("\r")
 
@@ -140,9 +140,9 @@ RSpec.describe Typewrite do
 
         it "prints remaining text immediately when any key is pressed (interrupt: :any)" do
           call_count = 0
-          allow(mock_stdin).to receive(:wait_readable) do
+          allow(IO).to receive(:select) do
             call_count += 1
-            call_count == 2 ? true : nil
+            call_count == 2 ? [mock_stdin] : nil
           end
           allow(mock_stdin).to receive(:getc).and_return("x")
 
@@ -151,9 +151,9 @@ RSpec.describe Typewrite do
 
         it "prints remaining text when matching key is pressed (interrupt: array)" do
           call_count = 0
-          allow(mock_stdin).to receive(:wait_readable) do
+          allow(IO).to receive(:select) do
             call_count += 1
-            call_count == 3 ? true : nil
+            call_count == 3 ? [mock_stdin] : nil
           end
           allow(mock_stdin).to receive(:getc).and_return("q")
 
@@ -163,14 +163,14 @@ RSpec.describe Typewrite do
         end
 
         it "does not interrupt when non-matching key is pressed (interrupt: array)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(true)
+          allow(IO).to receive(:select).and_return([mock_stdin])
           allow(mock_stdin).to receive(:getc).and_return("a", "b", "c", "d", "e")
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: ["q"]) }.to output("hello\n").to_stdout
         end
 
         it "does not interrupt when non-enter key is pressed (interrupt: :enter)" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(true)
+          allow(IO).to receive(:select).and_return([mock_stdin])
           allow(mock_stdin).to receive(:getc).and_return("x", "y", "z", "a", "b")
 
           expect { described_class.write("hello", 0.1, 1.5, true, interrupt: :enter) }.to output("hello\n").to_stdout
@@ -181,13 +181,13 @@ RSpec.describe Typewrite do
         end
 
         it "handles single character with interrupt enabled" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("x", 0.1, 1.5, true, interrupt: true) }.to output("x\n").to_stdout
         end
 
         it "respects line_break: false with interrupt" do
-          allow(mock_stdin).to receive(:wait_readable).and_return(nil)
+          allow(IO).to receive(:select).and_return(nil)
 
           expect { described_class.write("hi", 0.1, 1.5, false, interrupt: true) }.to output("hi").to_stdout
         end

@@ -64,7 +64,9 @@ module Typewrite
     $stdin.raw do |io|
       while index < chars.length
         # Check for keypress (non-blocking)
-        if io.wait_readable(0)
+        # rubocop:disable Lint/IncompatibleIoSelectWithFiberScheduler
+        if IO.select([io], nil, nil, 0)
+          # rubocop:enable Lint/IncompatibleIoSelectWithFiberScheduler
           pressed = io.getc
           if key_matches?(pressed, interrupt_config)
             # Print remaining text immediately

@@ -18,17 +18,37 @@ Typewrite.write("Your message here!")
 ```
 
 ### Options ###
-The variable options include type rate, pause length, and whether or not a newline is desired at the end of each message. By default, the type rate is one character per 0.1 second with a 1.5 second pause after each punctuation character `['.','?','!']` with a new line after each message. 
 
-You can adjust the type rate and pause length with integers and turn off the newlines by passing integers and a boolean respectively. 
+The variable options include type rate, pause length, line breaks, and interrupt behavior. By default, the type rate is one character per 0.1 second with a 1.5 second pause after each punctuation character `['.','?','!']` with a new line after each message.
 
-Example
+#### Basic Options
+
+You can adjust the type rate and pause length with numbers and turn off the newlines with a boolean:
 
 ```ruby
 message = "Here's your message"
 Typewrite.write(message, 0.05, 0, false)
 ```
+
 That would result in a message that types a character every 0.05 seconds with no punctuation pauses and no newlines after each message.
+
+#### Interrupt Mode
+
+You can allow users to skip the typewriter animation by pressing keys during output:
+
+```ruby
+# Allow interruption with Enter key (default interrupt behavior)
+Typewrite.write("Press ENTER to skip...", interrupt: true)
+Typewrite.write("Press ENTER to skip...", interrupt: :enter)
+
+# Allow interruption with any key
+Typewrite.write("Press ANY key to skip...", interrupt: :any)
+
+# Allow interruption with specific keys
+Typewrite.write("Press Q, X, or SPACE to skip...", interrupt: ["q", "x", " "])
+```
+
+When interrupted, the remaining text prints immediately so users see the complete message.
 
 ## Development
 

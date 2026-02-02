@@ -14,6 +14,12 @@ Metrics/BlockLength:
     - "spec/**/*"
     - "*.gemspec"
 
+Metrics/AbcSize:
+  Max: 18  # Allow slightly higher for interrupt logic
+
+Metrics/MethodLength:
+  Max: 20  # Allow slightly higher for interrupt logic
+
 # Prefer double quotes (common in gems)
 Style/StringLiterals:
   EnforcedStyle: double_quotes

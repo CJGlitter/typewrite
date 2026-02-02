@@ -18,11 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated README with interrupt mode documentation and examples
 - Adjusted RuboCop metrics configuration for interrupt logic
+- **Note:** Undocumented keyword argument syntax (e.g., `type_rate: 0.05`) is no longer supported due to Ruby 3.0+ keyword argument separation. All documented positional argument usage remains fully compatible.
 
 ### Technical
 - Added `write_interruptible` and `key_matches?` private methods
-- Uses `io.wait_readable(0)` for non-blocking input polling
-- 100% backwards compatible via keyword argument (interrupt: false default)
+- Uses `IO.select` for non-blocking input polling (Ruby 3.0+ compatible)
+- 100% backwards compatible for all documented usage patterns
 
 ## [1.1.0] - 2025-01-XX
 

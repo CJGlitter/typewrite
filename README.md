@@ -30,6 +30,15 @@ Typewrite.write(message, 0.05, 0, false)
 ```
 That would result in a message that types a character every 0.05 seconds with no punctuation pauses and no newlines after each message.
 
+## Development
+
+### Running Tests
+
+```bash
+bundle install
+bundle exec rspec
+```
+
 ## Versioning
 
 Typewrite follows the [Semantic Versioning](http://semver.org/) standard.

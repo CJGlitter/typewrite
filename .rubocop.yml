@@ -1,0 +1,30 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - "vendor/**/*"
+    - "pkg/**/*"
+
+# Gem-specific relaxations
+Style/Documentation:
+  Enabled: false  # Small gem, README is sufficient
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+
+# Prefer double quotes (common in gems)
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Frozen string literal is good practice
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+# Allow boolean parameters for backwards compatibility
+Style/OptionalBooleanParameter:
+  Enabled: false

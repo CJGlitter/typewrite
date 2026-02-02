@@ -36,7 +36,17 @@ That would result in a message that types a character every 0.05 seconds with no
 
 ```bash
 bundle install
-bundle exec rspec
+bundle exec rake        # Run tests + linting
+bundle exec rspec       # Run tests only
+bundle exec rubocop     # Run linting only
+```
+
+### Code Quality
+
+This project uses RuboCop for linting. Please ensure your code passes linting before submitting a PR:
+
+```bash
+bundle exec rubocop -A  # Auto-fix issues
 ```
 
 ## Versioning

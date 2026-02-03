@@ -1,0 +1,29 @@
+# Gem build artifacts
+*.gem
+pkg/
+
+# Bundler
+/.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# RSpec
+/spec/examples.txt
+/coverage/
+
+# RuboCop
+/.rubocop-*
+
+# IDE/Editor
+/.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.log
